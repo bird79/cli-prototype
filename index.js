@@ -80,6 +80,7 @@ var questionsFood = [{
 }];
 
 commander.arguments('<question>')
+  .version('1.0.0')
   .option('-f, --filename <filnename>', 'Write filename')
   .action(function(question) {
   if(question == 'person') {
