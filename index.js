@@ -78,16 +78,18 @@ var questionsFood = [{
   message: 'Is this for delivery?',
   type: 'confirm'
 }];
-
-commander.arguments('<question>')
+var questions;
+commander
   .version('1.0.0')
+  .description('Application simple description')
+  .arguments('<question>')
   .option('-f, --filename <filnename>', 'Write filename')
-  .action(function(question) {
-  if(question == 'person') {
-    questions = questionsPerson;
-  } else if (question == 'food') {
-    questions = questionsFood;
-  }
+  .action(function(question, filename) {
+    if(question == 'person') {
+      questions = questionsPerson;
+    } else if (question == 'food') {
+      questions = questionsFood;
+    }
 }).parse(process.argv);
 
 if (typeof questions === 'undefined') {
