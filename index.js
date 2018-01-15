@@ -102,7 +102,7 @@ if (typeof questions === 'undefined') {
 }
 clear();
 console.log(
-  chalk.yellow(
+  chalk.blue(
     figlet.textSync('GlueM', { horizontalLayout: 'full' })
   )
 );
