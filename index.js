@@ -2,6 +2,9 @@
 var commander = require('commander');
 var inquirer = require('inquirer');
 var writeFile = require('write');
+var clear = require('clear');
+var chalk = require('chalk');
+var figlet = require('figlet');
 
 var questionsPerson = [{
     name: 'firstName',
@@ -97,7 +100,12 @@ if (typeof questions === 'undefined') {
   // throw new Error('require type');
   process.exit(1);
 }
-
+clear();
+console.log(
+  chalk.yellow(
+    figlet.textSync('GlueM', { horizontalLayout: 'full' })
+  )
+);
 inquirer.prompt(questions).then(answers => {
   console.log(answers);
   if(commander.filename) {
