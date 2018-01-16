@@ -83,9 +83,10 @@ var questionsFood = [{
 }];
 var questions;
 commander
-  .version('1.0.0')
+  .version('Glue Mobile CLI: 1.0.0')
   .description('Application simple description')
   .arguments('<question>')
+  .option('-v, --ver', 'Show version')
   .option('-f, --filename <filnename>', 'Write filename')
   .action(function(question, filename) {
     if(question == 'person') {
@@ -95,17 +96,23 @@ commander
     }
 }).parse(process.argv);
 
+if (commander.ver) {
+  //clear();
+  console.log(
+    chalk.blue(
+      figlet.textSync('GlueMobile CLI', { horizontalLayout: 'full' })
+    )
+  );
+  console.log('Glue Mobile CLI: 1.0.0');
+  process.exit(1);
+}
+
 if (typeof questions === 'undefined') {
   console.error('arguments is either person or food');
   // throw new Error('require type');
   process.exit(1);
 }
-clear();
-console.log(
-  chalk.blue(
-    figlet.textSync('GlueM', { horizontalLayout: 'full' })
-  )
-);
+
 inquirer.prompt(questions).then(answers => {
   console.log(answers);
   if(commander.filename) {
